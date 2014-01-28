@@ -31,6 +31,7 @@ for file in $files; do
 done
 echo "done"
 
+# TODO install homebrew
 # install ack and ctags
 echo "installing ack and ctags"
 brew install ack ctags
