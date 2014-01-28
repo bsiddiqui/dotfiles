@@ -46,6 +46,7 @@ Bundle 'vim-scripts/wombat256.vim'
 
 " plugins
 Bundle 'mileszs/ack.vim'
+Bundle 'tomtom/checksyntax_vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
@@ -66,8 +67,7 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'marijnh/tern_for_vim'
 
 " syntax files
-Bundle 'tomtom/checksyntax_vim'
-Bundle 'jelera/vim-javascript-syntax'
+Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-markdown'
 Bundle 'voithos/vim-python-syntax'
 Bundle 'kchmck/vim-coffee-script'
