@@ -67,7 +67,7 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'marijnh/tern_for_vim'
 
 " syntax files
-Bundle 'pangloss/vim-javascript'
+Bundle 'jelera/vim-javascript-syntax'
 Bundle 'tpope/vim-markdown'
 Bundle 'voithos/vim-python-syntax'
 Bundle 'kchmck/vim-coffee-script'
