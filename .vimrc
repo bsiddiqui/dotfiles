@@ -86,9 +86,6 @@ let g:Tlist_Use_Right_Window = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-" ctrlp config
-let g:ctrlp_working_path_mode = 'c'
-
 " syntax highlighting and auto-indentation
 syntax on
 filetype indent on
