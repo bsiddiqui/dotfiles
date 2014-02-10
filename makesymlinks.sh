@@ -5,10 +5,12 @@
 ############################
 
 ########## Variables
-
-dir=~/dotfiles                    # dotfiles directory
-olddir=~/dotfiles_old             # old dotfiles backup directory
-files=".tmux.conf .zshrc .vimrc .vim .aliases .functions .gitconfig"    # list of files/folders to symlink in homedir
+# dotfiles directory
+dir=~/dotfiles
+# old dotfiles backup directory
+olddir=~/dotfiles_old
+# list of files/folders to symlink in homedir
+files=".tmux.conf .zshrc .vimrc .vim .aliases .functions .gitconfig .ackrc"
 
 ##########
 
