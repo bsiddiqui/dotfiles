@@ -42,7 +42,10 @@ echo "done"
 # install vim bundles
 echo "installing vim bundles"
 vim +BundleInstall +qall
-# TODO special setup for YouCompleteMe
+# compile YCM
+cd ~/.vim/bundle/YouCompleteMe && ./install.sh
+# setup tern server
+cd ~/.vim/bundle/tern_for_vim && npm install
 echo "done"
 
 install_zsh () {
