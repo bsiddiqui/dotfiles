@@ -18,3 +18,6 @@ run the script
 ```
 ./devsetup.sh
 ```
+==
+
+inspiration drawn from [@ranman](https://github.com/ranman/), [@tmacwill](https://github.com/tmacwill/), [@MattNguyen](https://github.com/MattNguyen/)
