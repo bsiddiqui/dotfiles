@@ -33,10 +33,14 @@ for file in $files; do
 done
 echo "done"
 
-# TODO install homebrew
+# install homebrew
+echo "installing homebrew"
+ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+echo "done"
+
 # install ack and ctags
-echo "installing ack and ctags"
-brew install ack ctags
+echo "installing ack, cmake, ctags, node, tmux, vim"
+brew install ack cmake ctags node tmux vim
 echo "done"
 
 # install vim bundles
