@@ -29,6 +29,12 @@ function get_git_branch() {
   echo `git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
 }
 
+#shortcut to open documentation with dash
 function dash() {
   open dash://"$1"
+}
+
+# shortcut for code directory
+function c() {
+  cd ~/code/$1
 }
