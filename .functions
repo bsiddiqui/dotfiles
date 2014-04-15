@@ -1,7 +1,5 @@
 # create a new directory and enter it
-function cdmkdir() {
-  mkdir -p "$@" && cd "$@"
-}
+function cdmkdir() { mkdir -p "$@" && cd "$@" }
 
 # move file/directory to the trash
 function trash () {
@@ -30,11 +28,9 @@ function get_git_branch() {
 }
 
 #shortcut to open documentation with dash
-function dash() {
-  open dash://"$1"
-}
+function dash() { open dash://"$1" }
 
 # shortcut for code directory
-function c() {
-  cd ~/code/$1
-}
+function c() { cd ~/code/$1 }
+function _c() { _files -W ~/code -/ }
+compdef _c c
