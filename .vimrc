@@ -62,10 +62,11 @@ Bundle 'kshenoy/vim-signature'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'raimondi/delimitMate'
 Bundle 'gregsexton/gitv'
-Bundle 'Valloric/YouCompleteMe'
 Bundle 'godlygeek/tabular'
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'marijnh/tern_for_vim'
 Bundle 'ervandew/supertab'
+" Bundle 'SirVer/ultisnips'
 
 " syntax files
 Bundle 'jelera/vim-javascript-syntax'
