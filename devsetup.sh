@@ -39,8 +39,8 @@ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 echo "done"
 
 # install ack and ctags
-echo "installing ack, cmake, ctags, node, tmux, vim"
-brew install ack cmake ctags node tmux vim
+echo "installing ack, cmake, ctags, tmux, vim"
+brew install ack cmake ctags tmux vim
 echo "done"
 
 # install vim bundles
