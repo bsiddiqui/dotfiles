@@ -1,4 +1,5 @@
-export PATH=/usr/local/bin:/Users/Basil/.rvm/bin:/usr/local/Library/Formula/nvm.rb:$PATH
+export PATH=$PATH:$HOME/.rvm/bin:/usr/local/bin:/usr/local/Library/Formula/nvm.rb
+
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
@@ -11,9 +12,7 @@ for file in ~/.{functions,aliases}; do
 done
 unset file
 
-# Uncomment following line if you want to disable marking untracked files under
-# VCS as dirty. This makes repository status check for large repositories much,
-# much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+# disable marking untracked files under VCS as dirty DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 source $HOME/.nvm/nvm.sh
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
