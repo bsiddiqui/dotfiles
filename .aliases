@@ -2,6 +2,7 @@ alias zshconfig='vim ~/.zshrc'
 alias vimconfig='vim ~/dotfiles/.vimrc'
 alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+alias pgstatus='pg_ctl -D /usr/local/var/postgres status'
 alias fs='foreman start'
 alias subl='open -a "Sublime Text 2"'
 alias rm=trash
