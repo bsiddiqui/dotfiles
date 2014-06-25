@@ -109,10 +109,10 @@ set tabstop=2
 set smarttab
 set expandtab
 
-" Auto save buffers whenever you lose focus
+" auto save buffers whenever you lose focus
 au FocusLost * silent! wa
 
-" Auto save buffers when you switch context
+" auto save buffers when you switch context
 set autowriteall
 
 " buffer navigation
