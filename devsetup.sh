@@ -47,7 +47,7 @@ echo "done"
 echo "installing vim bundles"
 vim +BundleInstall +qall
 # compile YCM
-cd ~/.vim/bundle/YouCompleteMe && ./install.sh
+cd ~/dotfiles/.vim/bundle/YouCompleteMe && ./install.sh
 # setup tern server
 cd ~/.vim/bundle/tern_for_vim && npm install
 echo "done"
