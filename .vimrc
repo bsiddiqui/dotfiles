@@ -77,6 +77,8 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-haml'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'wavded/vim-stylus'
+Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'groenewege/vim-less'
 
 " checksyntax config
 let g:checksyntax#auto_mode = 0
