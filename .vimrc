@@ -140,7 +140,7 @@ set nowritebackup
 set noswapfile
 
 " disable annoying beep on errors
-set noerrorbells
+set noerrorbells visualbell t_vb=
 if has('autocmd')
   autocmd GUIEnter * set vb t_vb=
 endif
