@@ -7,7 +7,6 @@ alias fs='foreman start'
 alias subl='open -a "Sublime Text 2"'
 alias rm=trash
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
-alias learnyounode="/Users/Basil/.node/bin/learnyounode"
 alias reload!='. ~/.zshrc'
 alias gs='git status'
 alias gcam='git commit -am'
