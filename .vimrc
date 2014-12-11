@@ -195,7 +195,6 @@ nnoremap <leader>C :TCommentBlock<CR>
 vnoremap <leader>c :TComment<CR>
 vnoremap <leader>C :TCommentBlock<CR>
 nnoremap <leader>nt :tabnew<CR>:CtrlP<CR>
-nnoremap <leader>h :tabnew<CR>:ConqueTerm bash<CR>
 nnoremap <leader>l :NERDTreeTabsToggle<CR>
 nnoremap <leader>k :CheckSyntax<CR>
 nnoremap <leader>o :CtrlP<CR>
