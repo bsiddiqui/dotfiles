@@ -34,6 +34,8 @@ set nocompatible
 filetype off
 set rtp+=~/dotfiles/.vim/bundle/Vundle.vim
 call vundle#begin()
+
+" let vundle manage vundle
 Bundle 'gmarik/Vundle.vim'
 
 " color schemes
@@ -74,6 +76,7 @@ Bundle 'digitaltoad/vim-jade'
 Bundle 'wavded/vim-stylus'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'groenewege/vim-less'
+call vundle#end()
 
 " checksyntax config
 let g:checksyntax#auto_mode = 0

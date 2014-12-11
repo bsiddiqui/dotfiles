@@ -10,7 +10,7 @@ dir=~/dotfiles
 # old dotfiles backup directory
 olddir=~/dotfiles_old
 # list of files/folders to symlink in homedir
-files=".tmux.conf .zshrc .vimrc .vim .aliases .functions .gitconfig .gitignore .gemrc .ackrc"
+files=".tmux.conf .zshrc .vimrc .aliases .functions .gitconfig .gitignore .gemrc .ackrc"
 
 ##########
 
@@ -43,15 +43,25 @@ echo "installing ack, cmake, ctags, tmux, vim"
 brew install ack cmake ctags tmux vim
 echo "done"
 
+# install vundle
+echo "install vundle"
+mkdir -p ~/dotfiles/.vim/bundle
+git clone https://github.com/gmarik/Vundle.vim.git ~/dotfiles/.vim/bundle/Vundle.vim
+ln -s ~/dotfiles/.vim ~/.vim
+echo "done"
+
 # install vim bundles
 echo "installing vim bundles"
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +BundleInstall +qall
+
 # compile YCM
 # cd ~/dotfiles/.vim/bundle/YouCompleteMe
 # git submodule update --init --recursive
 # ./install.sh
+# echo "done"
+
 # setup tern server
+echo "setting up tern sever"
 cd ~/.vim/bundle/tern_for_vim && npm install
 echo "done"
 
