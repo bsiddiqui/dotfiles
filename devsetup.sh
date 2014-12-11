@@ -45,6 +45,7 @@ echo "done"
 
 # install vim bundles
 echo "installing vim bundles"
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +BundleInstall +qall
 # compile YCM
 cd ~/dotfiles/.vim/bundle/YouCompleteMe && ./install.sh

@@ -32,9 +32,9 @@ set nocompatible
 
 " vundle
 filetype off
-set rtp+=~/dotfiles/vim/bundle/vundle
-call vundle#rc()
-Bundle 'gmarik/vundle'
+set rtp+=~/dotfiles/.vim/bundle/Vundle.vim
+call vundle#begin()
+Bundle 'gmarik/Vundle.vim'
 
 " color schemes
 Bundle 'nanotech/jellybeans.vim'
@@ -253,3 +253,5 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.yardoc\|node_modules\|dist\|log\|tmp$',
   \ 'file': '\.so$\|\.dat$|\.DS_Store$'
   \ }
+
+call vundle#config#require(g:bundles)
