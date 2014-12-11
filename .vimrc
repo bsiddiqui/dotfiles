@@ -55,7 +55,6 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'vim-scripts/trailing-whitespace'
 Bundle 'vim-scripts/taglist.vim'
 Bundle 'terryma/vim-multiple-cursors'
-" Bundle 'kshenoy/vim-signature'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'raimondi/delimitMate'
 Bundle 'gregsexton/gitv'
@@ -204,9 +203,13 @@ nnoremap <leader>ed :tabnew ~/.vimrc<cr>
 nnoremap <leader>src :source ~/.vimrc<cr>
 nnoremap <leader>tgt :set cursorcolumn! cursorline!<CR>
 
-" ; is better than :, and kj is better than ctrl-c
+" ; is better than :
 nnoremap ; :
 nnoremap : ;
+
+" kj/jk is better than ctrl-c or esc - also autosave when leaving insert mode
+inoremap kj <Esc>:w<CR>
+inoremap jk <Esc>:w<CR>
 
 "swap areas of text
 vnoremap <C-X> <Esc>`.``gvP``P
@@ -214,29 +217,19 @@ vnoremap <C-X> <Esc>`.``gvP``P
 " remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
-" also autosave when going to insert mode
-inoremap kj <Esc>:w<CR>
-inoremap jk <Esc>:w<CR>
-
 " more logical vertical navigation
 nnoremap <silent> k gk
 nnoremap <silent> j gj
 
-" compile coffee into js
-function! BrewCoffee()
-  silent! !coffee -p % &> /tmp/coffeetmp.js
-  sview /tmp/coffeetmp.js
-endfunc
-
 " make copy/pasting nice
 function! ToggleMouse()
-    if &mouse == 'a'
-        set mouse=r
-        set nonu
-    else
-        set mouse=a
-        set nu
-    endif
+  if &mouse == 'a'
+    set mouse=r
+    set nonu
+  else
+    set mouse=a
+    set nu
+  endif
 endfunction
 nnoremap <leader>m :call ToggleMouse()<CR>
 
