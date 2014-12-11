@@ -37,12 +37,7 @@ call vundle#begin()
 Bundle 'gmarik/Vundle.vim'
 
 " color schemes
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'tomasr/molokai'
-Bundle 'vim-scripts/Skittles-Dark'
-Bundle 'sickill/vim-monokai'
-Bundle 'hukl/Smyck-Color-Scheme'
-Bundle 'vim-scripts/wombat256.vim'
+Bundle 'brendonrapp/smyck-vim'
 
 " plugins
 Bundle 'mileszs/ack.vim'
