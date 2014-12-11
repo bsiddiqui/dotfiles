@@ -53,15 +53,15 @@ echo "done"
 # install vim bundles
 echo "installing vim bundles"
 vim +BundleInstall +qall
+echo "done"
 
 # compile YCM
-# cd ~/dotfiles/.vim/bundle/YouCompleteMe
-# git submodule update --init --recursive
-# ./install.sh
-# echo "done"
+echo "compiling youcompleteme"
+cd ~/dotfiles/.vim/bundle/YouCompleteMe && ./install.sh
+echo "done"
 
 # setup tern server
-echo "setting up tern sever"
+echo "setting up tern server"
 cd ~/.vim/bundle/tern_for_vim && npm install
 echo "done"
 
