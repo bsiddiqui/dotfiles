@@ -62,7 +62,8 @@ Bundle 'godlygeek/tabular'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'marijnh/tern_for_vim'
 Bundle 'ervandew/supertab'
-" Bundle 'SirVer/ultisnips'
+Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
 
 " syntax files
 Bundle 'jelera/vim-javascript-syntax'
@@ -86,6 +87,11 @@ let g:Tlist_Use_Right_Window = 1
 " airline config
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+
+" snippet config
+let g:UltiSnipsExpandTrigger="<C-j>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
 " syntax highlighting and auto-indentation
 syntax on
