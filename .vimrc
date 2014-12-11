@@ -124,7 +124,6 @@ set showtabline=1
 
 " searching options
 set incsearch
-set showcmd
 set ignorecase
 set smartcase
 set hlsearch
@@ -240,9 +239,6 @@ function! ToggleMouse()
     endif
 endfunction
 nnoremap <leader>m :call ToggleMouse()<CR>
-
-" statusline
-set laststatus=2
 
 " ctrl p settings
 " Ignore some folders and files for CtrlP indexing
