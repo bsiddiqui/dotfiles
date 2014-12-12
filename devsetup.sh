@@ -40,7 +40,7 @@ echo "done"
 
 # install ack and ctags
 echo "installing ack, cmake, ctags, tmux, vim"
-brew install ack cmake ctags tmux vim
+brew install ack cmake ctags tmux vim node
 echo "done"
 
 # install vundle
