@@ -1,4 +1,4 @@
-export PATH=$PATH:$HOME/.rvm/bin:/usr/local/bin:/usr/local/Library/Formula/nvm.rb
+export PATH=$PATH:$HOME/.rvm/bin:/usr/local/bin
 
 
 # Path to your oh-my-zsh configuration.
@@ -14,5 +14,4 @@ unset file
 
 # disable marking untracked files under VCS as dirty DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-source $HOME/.nvm/nvm.sh
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
