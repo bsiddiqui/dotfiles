@@ -19,8 +19,6 @@ run the script
 ./devsetup.sh
 ```
 
-p.s. make sure you change .gitconfig or all your commits will belong to me
-
 ==
 
 inspiration drawn from [@ranman](https://github.com/ranman/), [@tmacwill](https://github.com/tmacwill/), [@MattNguyen](https://github.com/MattNguyen/)
