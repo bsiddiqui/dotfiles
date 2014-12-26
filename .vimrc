@@ -1,31 +1,3 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Be sure to read the README!
-"   shortcuts:
-"   ; maps to :
-"   ,a: ack from the current directory
-"   ,b: browse tags
-"   ,c: toggle comments
-"   ,C: toggle block comments
-"   ,nt: open file in new tab
-"   ,l: toggle NERDTree
-"   ,h: open a shell in a new tab
-"   ,k: syntax-check the current file
-"   ,m: toggle mouse support
-"   ,p: toggle paste mode
-"   ,o: open file
-"   ,s: split window
-"   ,hs: horizontal split
-"   ,t: new tab
-"   ,w: close tab
-"   ,ed: edit vimrc
-"   ,src: source vimrc
-"   ,tgt: display target of cursor position
-"   kj: enter normal mode and save
-"   Ctrl+{h,j,k,l}: move among windows
-"   ii: operate on all text at current indent level
-"   ai: operate on all text plus one line up at current indent level
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " long live vim
 set encoding=utf-8
 set nocompatible
