@@ -38,9 +38,9 @@ echo "installing homebrew"
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 echo "done"
 
-# install ack and ctags
-echo "installing ack, cmake, ctags, tmux, vim"
-brew install ack cmake ctags tmux vim node reattach-to-user-namespace
+# install some taps
+echo "installing ag, cmake, ctags, tmux, vim"
+brew install ag cmake ctags tmux vim node reattach-to-user-namespace
 echo "done"
 
 # install vundle

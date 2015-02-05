@@ -14,7 +14,7 @@ Bundle 'gmarik/Vundle.vim'
 Bundle 'brendonrapp/smyck-vim'
 
 " plugins
-Bundle 'mileszs/ack.vim'
+Bundle 'rking/ag.vim'
 Bundle 'tomtom/checksyntax_vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
@@ -50,6 +50,27 @@ Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'groenewege/vim-less'
 call vundle#end()
 
+" shortcuts to common commands
+let mapleader = ","
+nnoremap <leader>a :Ag
+nnoremap <leader>b :TlistToggle<CR>
+nnoremap <leader>c :TComment<CR>
+nnoremap <leader>C :TCommentBlock<CR>
+vnoremap <leader>c :TComment<CR>
+vnoremap <leader>C :TCommentBlock<CR>
+nnoremap <leader>nt :tabnew<CR>:CtrlP<CR>
+nnoremap <leader>l :NERDTreeTabsToggle<CR>
+nnoremap <leader>k :CheckSyntax<CR>
+nnoremap <leader>o :CtrlP<CR>
+nnoremap <leader>p :set invpaste<CR>
+nnoremap <leader>t :tabnew<CR>
+nnoremap <leader>s :vsplit<CR>
+nnoremap <leader>hs :split<CR>
+nnoremap <leader>w :tabclose<CR>
+nnoremap <leader>ed :tabnew ~/.vimrc<cr>
+nnoremap <leader>src :source ~/.vimrc<cr>
+nnoremap <leader>tgt :set cursorcolumn! cursorline!<CR>
+
 " checksyntax config
 let g:checksyntax#auto_mode = 0
 
@@ -64,6 +85,22 @@ let g:airline#extensions#tabline#enabled = 1
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+
+" ctrlp config
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|dist\|log\|tmp$',
+  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
+  \ }
+
+" ag is fast enough that ctrlp doesn't need to cache
+let g:ctrlp_use_caching = 0
+
+" use ag over grep
+set grepprg=ag\ --nogroup\ --nocolor
+
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " syntax highlighting and auto-indentation
 syntax on
@@ -160,27 +197,6 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" shortcuts to common commands
-let mapleader = ","
-nnoremap <leader>a :Ack
-nnoremap <leader>b :TlistToggle<CR>
-nnoremap <leader>c :TComment<CR>
-nnoremap <leader>C :TCommentBlock<CR>
-vnoremap <leader>c :TComment<CR>
-vnoremap <leader>C :TCommentBlock<CR>
-nnoremap <leader>nt :tabnew<CR>:CtrlP<CR>
-nnoremap <leader>l :NERDTreeTabsToggle<CR>
-nnoremap <leader>k :CheckSyntax<CR>
-nnoremap <leader>o :CtrlP<CR>
-nnoremap <leader>p :set invpaste<CR>
-nnoremap <leader>t :tabnew<CR>
-nnoremap <leader>s :vsplit<CR>
-nnoremap <leader>hs :split<CR>
-nnoremap <leader>w :tabclose<CR>
-nnoremap <leader>ed :tabnew ~/.vimrc<cr>
-nnoremap <leader>src :source ~/.vimrc<cr>
-nnoremap <leader>tgt :set cursorcolumn! cursorline!<CR>
-
 " ; is better than :
 nnoremap ; :
 nnoremap : ;
@@ -188,9 +204,6 @@ nnoremap : ;
 " kj/jk is better than ctrl-c or esc - also autosave when leaving insert mode
 inoremap kj <Esc>:w<CR>
 inoremap jk <Esc>:w<CR>
-
-"swap areas of text
-vnoremap <C-X> <Esc>`.``gvP``P
 
 " remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
@@ -210,12 +223,5 @@ function! ToggleMouse()
   endif
 endfunction
 nnoremap <leader>m :call ToggleMouse()<CR>
-
-" ctrl p settings
-" Ignore some folders and files for CtrlP indexing
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|dist\|log\|tmp$',
-  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
-  \ }
 
 call vundle#config#require(g:bundles)
