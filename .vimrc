@@ -38,7 +38,9 @@ Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 
 " syntax files
+Bundle 'scrooloose/syntastic'
 Bundle 'jelera/vim-javascript-syntax'
+Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-markdown'
 Bundle 'voithos/vim-python-syntax'
 Bundle 'kchmck/vim-coffee-script'
@@ -73,6 +75,9 @@ nnoremap <leader>tgt :set cursorcolumn! cursorline!<CR>
 
 " checksyntax config
 let g:checksyntax#auto_mode = 0
+
+" use standard javascript syntax checking
+let g:syntastic_javascript_checkers = ['standard']
 
 " taglist config
 let g:Tlist_Use_Right_Window = 1
