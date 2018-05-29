@@ -1,5 +1,5 @@
 # create a new directory and enter it
-function cdmkdir() { mkdir -p "$@" && cd "$@" }
+function cdmkdir () { mkdir -p "$@" && cd "$@" }
 
 # move file/directory to the trash
 function trash () {
@@ -23,7 +23,7 @@ function trash () {
 }
 
 # git functions
-function get_git_branch() {
+function get_git_branch () {
   echo `git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
 }
 
@@ -31,6 +31,13 @@ function get_git_branch() {
 function dash() { open dash://"$1" }
 
 # shortcut for code directory
-function c() { cd ~/code/$1 }
-function _c() { _files -W ~/code -/ }
+function c () { cd ~/code/$1 }
+function _c () { _files -W ~/code -/ }
 compdef _c c
+
+# compress video files
+compressMp4 () {
+  for f; do
+    ffmpeg -y -i "$f" -vcodec h264 -preset ultrafast -pix_fmt yuv420p -movflags faststart "${f%.*}-compressed.mp4"
+  done
+}
