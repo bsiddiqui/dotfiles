@@ -15,16 +15,16 @@ Bundle 'brendonrapp/smyck-vim'
 
 " plugins
 Bundle 'rking/ag.vim'
-Bundle 'tomtom/checksyntax_vim'
-Bundle 'kien/ctrlp.vim'
+" Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
+Bundle 'tpope/tpope-vim-abolish'
 Bundle 'tpope/vim-fugitive'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tomtom/tcomment_vim'
-Bundle 'vim-scripts/trailing-whitespace'
+" Bundle 'vim-scripts/trailing-whitespace'
 Bundle 'vim-scripts/taglist.vim'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'michaeljsmith/vim-indent-object'
@@ -34,11 +34,15 @@ Bundle 'godlygeek/tabular'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'marijnh/tern_for_vim'
 Bundle 'ervandew/supertab'
-Bundle 'SirVer/ultisnips'
+" Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
+Bundle 'tpope/vim-eunuch'
+Bundle 'wincent/Command-T'
+Bundle 'skywind3000/asyncrun.vim'
 
 " syntax files
-Bundle 'scrooloose/syntastic'
+Bundle 'w0rp/ale'
+Bundle 'vim-scripts/JavaScript-Indent'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-markdown'
@@ -72,12 +76,24 @@ nnoremap <leader>w :tabclose<CR>
 nnoremap <leader>ed :tabnew ~/.vimrc<cr>
 nnoremap <leader>src :source ~/.vimrc<cr>
 nnoremap <leader>tgt :set cursorcolumn! cursorline!<CR>
+nnoremap <leader>RC :.-1read ~/code/snippets/container.js<CR>G<ESC>dd
+nnoremap <leader>Rc :.-1read ~/code/snippets/component.js<CR>G<ESC>dd
 
 " checksyntax config
 let g:checksyntax#auto_mode = 0
 
 " use standard javascript syntax checking
-let g:syntastic_javascript_checkers = ['standard']
+let g:ale_linters = {
+      \   'javascript': ['standard'],
+      \}
+let g:ale_sign_error = '●'
+let g:ale_sign_error = '.'
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_lint_on_text_changed = 'never'
+nmap <silent> <C-b> <Plug>(ale_previous_wrap)
+nmap <silent> <C-n> <Plug>(ale_next_wrap)
 
 " taglist config
 let g:Tlist_Use_Right_Window = 1
@@ -85,6 +101,7 @@ let g:Tlist_Use_Right_Window = 1
 " airline config
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#ale#enabled = 1
 
 " snippet config
 let g:UltiSnipsExpandTrigger="<C-j>"
@@ -92,14 +109,22 @@ let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
 " ctrlp config
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|dist\|log\|tmp$',
-  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
-  \ }
-
+" let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" let g:ctrlp_custom_ignore = {
+"   \ 'dir':  '\.git$\|\.yardoc\|node_modules\|dist\|log\|tmp$',
+"   \ 'file': '\.so$\|\.dat$|\.DS_Store$'
+"   \ }
 " ag is fast enough that ctrlp doesn't need to cache
-let g:ctrlp_use_caching = 0
+" let g:ctrlp_use_caching = 0
+
+" command-t config
+let g:CommandTTraverseSCM = 'pwd'
+let g:CommandTCancelMap=['<ESC>', '<C-c>']
+let g:CommandTHighlightColor= 'CursorLine'
+let g:CommandTCursorColor= 'Constant'
+let g:CommandTCharMatchedColor= 'Constant'
+set wildignore+=*.DS_Store,.git,node_modules,Pods,android
+nnoremap <C-p> <Esc>:CommandT<CR>
 
 " use ag over grep
 set grepprg=ag\ --nogroup\ --nocolor
@@ -229,4 +254,4 @@ function! ToggleMouse()
 endfunction
 nnoremap <leader>m :call ToggleMouse()<CR>
 
-call vundle#config#require(g:bundles)
+" call vundle#config#require(g:bundles)
