@@ -39,8 +39,13 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 echo "done"
 
 # install some taps
-echo "installing ag, cmake, ctags, tmux, vim"
-brew install ag cmake ctags tmux vim node reattach-to-user-namespace
+echo "installing some taps"
+brew install ag cmake ctags tmux vim node reattach-to-user-namespace caskroom/cask/brew-cask
+echo "done"
+
+# install some apps"
+echo "installing some apps"
+brew cask install google-chrome soundcleod quip slack iterm2 alfred dropbox
 echo "done"
 
 # install vundle
