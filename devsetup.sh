@@ -45,7 +45,7 @@ echo "done"
 
 # install some apps"
 echo "installing some apps"
-brew cask install google-chrome soundcleod quip slack iterm2 alfred dropbox
+brew cask install google-chrome soundcleod iterm2 dropbox
 echo "done"
 
 # install vundle
