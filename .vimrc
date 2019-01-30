@@ -234,6 +234,7 @@ nnoremap : ;
 " kj/jk is better than ctrl-c or esc - also autosave when leaving insert mode
 inoremap kj <Esc>:w<CR>
 inoremap jk <Esc>:w<CR>
+inoremap jj <Esc>
 
 " remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
