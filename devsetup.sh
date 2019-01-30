@@ -45,7 +45,7 @@ echo "done"
 
 # install some apps"
 echo "installing some apps"
-brew cask install google-chrome soundcleod iterm2 dropbox postman flux notion quip telegram spotify sublime-text stremio postico slack
+brew cask install google-chrome soundcleod iterm2 dropbox postman flux notion quip telegram spotify sublime-text stremio postico slack sketch
 echo "done"
 
 # install vundle
@@ -68,6 +68,13 @@ echo "done"
 # setup tern server
 echo "setting up tern server"
 cd ~/.vim/bundle/tern_for_vim && npm install
+echo "done"
+
+# setup command-t
+echo "setting up command-t"
+cd ~/.vim/bundle/Command-T/ruby/command-t/ext/command-t
+ruby extconf.rb
+make
 echo "done"
 
 install_zsh () {
