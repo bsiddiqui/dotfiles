@@ -83,15 +83,15 @@ nnoremap <leader>Rc :.-1read ~/code/snippets/component.js<CR>G<ESC>dd
 let g:checksyntax#auto_mode = 0
 
 " use standard javascript syntax checking
-let g:ale_linters = {
-      \   'javascript': ['standard'],
-      \}
+let g:ale_fixers = {'javascript': ['prettier_standard']}
+let g:ale_linters = {'javascript': ['standard']}
 let g:ale_sign_error = '●'
 let g:ale_sign_error = '.'
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_fix_on_save = 1
 nmap <silent> <C-b> <Plug>(ale_previous_wrap)
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
 
@@ -116,6 +116,8 @@ let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 "   \ }
 " ag is fast enough that ctrlp doesn't need to cache
 " let g:ctrlp_use_caching = 0
+
+set wildignore+=dist,ios
 
 " command-t config
 let g:CommandTTraverseSCM = 'pwd'
