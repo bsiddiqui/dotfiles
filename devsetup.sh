@@ -62,7 +62,7 @@ echo "done"
 
 # compile YCM
 echo "compiling youcompleteme"
-cd ~/dotfiles/.vim/bundle/YouCompleteMe && ./install.sh
+cd ~/dotfiles/.vim/bundle/YouCompleteMe && python3 install.py --clangd-completer --ts-completer
 echo "done"
 
 # setup tern server
