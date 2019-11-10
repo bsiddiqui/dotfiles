@@ -40,7 +40,8 @@ echo "done"
 
 # install some taps
 echo "installing some taps"
-brew install ag cmake ctags tmux vim node reattach-to-user-namespace caskroom/cask/brew-cask
+brew install postgres firebase-cli heroku/brew/heroku python3 ag cmake ctags tmux vim node reattach-to-user-namespace dockutil
+brew services start postgresql
 echo "done"
 
 # install some apps"
