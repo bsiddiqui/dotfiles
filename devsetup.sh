@@ -46,7 +46,12 @@ echo "done"
 
 # install some apps"
 echo "installing some apps"
-brew cask install google-chrome soundcleod iterm2 dropbox postman flux notion quip telegram spotify sublime-text stremio postico slack sketch
+brew cask install airtable google-cloud-sdk zoomus superhuman google-chrome soundcleod iterm2 dropbox postman flux notion telegram spotify sublime-text stremio postico slack sketch notion
+echo "done"
+
+# remove pinned apps from the dock
+echo "removing pinned apps from dock"
+dockutil --remove all
 echo "done"
 
 # install vundle
@@ -76,6 +81,13 @@ echo "setting up command-t"
 cd ~/.vim/bundle/Command-T/ruby/command-t/ext/command-t
 ruby extconf.rb
 make
+echo "done"
+
+echo "setting up terminal profile"
+git clone https://github.com/hukl/Smyck-Color-Scheme.git ~/Downloads/Smyck-Terminal-Theme
+git clone https://github.com/powerline/fonts.git ~/Downloads/Powerline-Fonts
+cd ~/Downloads/Powerline-Fonts && ./install.sh Inconsolata
+rm -rf ~/Downloads/Powerline-Fonts
 echo "done"
 
 install_zsh () {
