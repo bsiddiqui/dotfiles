@@ -46,7 +46,7 @@ echo "done"
 
 # install some apps"
 echo "installing some apps"
-brew cask install airtable google-cloud-sdk zoomus superhuman google-chrome soundcleod iterm2 dropbox postman flux notion telegram spotify sublime-text stremio postico slack sketch notion
+brew cask install alfred airtable google-cloud-sdk zoomus superhuman google-chrome soundcleod iterm2 dropbox postman flux notion telegram spotify sublime-text stremio postico slack sketch notion
 echo "done"
 
 # remove pinned apps from the dock
