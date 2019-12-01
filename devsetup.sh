@@ -40,7 +40,8 @@ echo "done"
 
 # install some taps
 echo "installing some taps"
-brew install postgres firebase-cli heroku/brew/heroku python3 ag cmake ctags tmux vim node reattach-to-user-namespace dockutil
+brew tap fishtown-analytics/dbt
+brew install dbt postgres firebase-cli heroku/brew/heroku python3 ag cmake ctags tmux vim node reattach-to-user-namespace dockutil
 brew services start postgresql
 echo "done"
 
