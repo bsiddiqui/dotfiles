@@ -32,17 +32,16 @@ done
 
 # install homebrew
 echo "installing homebrew"
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # install some taps
 echo "installing some taps"
-brew tap dbt-labs/dbt
-brew install dbt postgres firebase-cli heroku/brew/heroku python3 ag cmake ctags tmux vim node reattach-to-user-namespace dockutil ruby
-brew services start postgresql
+brew install postgresql@15 firebase-cli python3 ag cmake ctags tmux vim node reattach-to-user-namespace dockutil ruby
+brew services start postgresql@15
 
 # install some apps"
 echo "installing some apps"
-brew cask install alfred google-cloud-sdk zoom superhuman google-chrome soundcleod iterm2 dropbox postman flux notion telegram spotify stremio postico slack figma notion
+brew install alfred google-cloud-sdk zoom superhuman google-chrome soundcleod iterm2 dropbox postman flux notion telegram spotify stremio postico slack figma notion signal microsoft-teams arc 1password --cask
 
 # remove pinned apps from the dock
 echo "removing pinned apps from dock"
@@ -93,7 +92,7 @@ install_zsh () {
     # Clone the oh-my-zsh repository from GitHub only if it isn't already present
     if [[ ! -d ~/.oh-my-zsh/ ]]; then
       echo "installing oh-my-zsh"
-      git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+      git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
       echo "done"
     fi
     # Set the default shell to zsh if it isn't currently set to zsh
