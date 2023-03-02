@@ -15,45 +15,41 @@ files=".tmux.conf .zshrc .vimrc .aliases .functions .gitconfig .gitignore .gemrc
 ##########
 
 # create dotfiles_old in homedir
-echo "Creating $olddir for backup of any existing dotfiles in ~ ..."
+echo "creating $olddir for backup of any existing dotfiles in ~ ..."
 mkdir -p $olddir
-echo "done"
 
 # change to the dotfiles directory
-echo "Changing to the $dir directory ..."
+echo "changing to the $dir directory ..."
 cd $dir
-echo "done"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
-echo "Moving any existing dotfiles from ~ to $olddir"
+echo "moving any existing dotfiles from ~ to $olddir"
 for file in $files; do
   mv ~/$file ~/dotfiles_old/
-  echo "Creating symlink to $file in home directory."
+  echo "creating symlink to $file in home directory."
   ln -s $dir/$file ~/$file
 done
-echo "done"
 
 # install homebrew
 echo "installing homebrew"
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-echo "done"
 
 # install some taps
 echo "installing some taps"
-brew tap fishtown-analytics/dbt
-brew install dbt postgres firebase-cli heroku/brew/heroku python3 ag cmake ctags tmux vim node reattach-to-user-namespace dockutil
+brew tap dbt-labs/dbt
+brew install dbt postgres firebase-cli heroku/brew/heroku python3 ag cmake ctags tmux vim node reattach-to-user-namespace dockutil ruby
 brew services start postgresql
-echo "done"
 
 # install some apps"
 echo "installing some apps"
-brew cask install alfred airtable google-cloud-sdk zoomus superhuman google-chrome soundcleod iterm2 dropbox postman flux notion telegram spotify sublime-text stremio postico slack sketch notion
-echo "done"
+brew cask install alfred google-cloud-sdk zoom superhuman google-chrome soundcleod iterm2 dropbox postman flux notion telegram spotify stremio postico slack figma notion
 
 # remove pinned apps from the dock
 echo "removing pinned apps from dock"
 dockutil --remove all
-echo "done"
+
+echo "rebooting terminal"
+source ~/.zshrc
 
 # install vundle
 echo "install vundle"

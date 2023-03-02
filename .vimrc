@@ -39,6 +39,7 @@ Bundle 'honza/vim-snippets'
 Bundle 'tpope/vim-eunuch'
 Bundle 'wincent/Command-T'
 Bundle 'skywind3000/asyncrun.vim'
+Bundle 'github/copilot.vim'
 
 " syntax files
 Bundle 'w0rp/ale'
@@ -54,6 +55,7 @@ Bundle 'digitaltoad/vim-jade'
 Bundle 'wavded/vim-stylus'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'groenewege/vim-less'
+Bundle 'pantharshit00/vim-prisma'
 call vundle#end()
 
 " shortcuts to common commands
