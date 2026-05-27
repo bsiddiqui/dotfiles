@@ -1,1 +1,35 @@
-.vim
+.DS_Store
+.vim/
+.vim/bundle/
+
+# Local-only overlays and generated configs.
+*.local
+*.local.*
+*.private
+*.private.*
+.env
+.env.*
+!.env.example
+!.env.local.example
+.zshrc.local
+.gitconfig.local
+!templates/
+!templates/*.example
+
+# Tool state that should never be checked in.
+.codex/
+.claude/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+history.jsonl
+auth.json
+session_index.jsonl
+shell_snapshots/
+logs/
+log/
+
+# Temporary files.
+*.swp
+*.swo
+*.tmp
