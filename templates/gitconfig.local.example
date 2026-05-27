@@ -1,0 +1,10 @@
+# Copy to ~/.gitconfig.local for machine-local identity and tool state.
+# This file is included from the tracked ~/.gitconfig.
+
+[user]
+  name = Basil Siddiqui
+  email = basil.siddiqui@example.com
+
+# Keep machine-specific tool IDs out of the public repo.
+# [coderabbit]
+#   machineId = cli/...
