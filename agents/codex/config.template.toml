@@ -1,0 +1,32 @@
+# Portable Codex preferences.
+# Do not commit ~/.codex/auth.json, logs, sessions, history, SQLite files, or app-generated machine paths.
+
+model = "gpt-5.5"
+model_reasoning_effort = "high"
+notify = ["afplay", "/System/Library/Sounds/Blow.aiff"]
+
+# Match `codex --ask-for-approval never --sandbox danger-full-access`.
+# This skips command approval prompts and gives Codex full local access.
+approval_policy = "never"
+sandbox_mode = "danger-full-access"
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."coderabbit@claude-plugins-official"]
+enabled = true
+
+[plugins."compound-engineering@compound-engineering-plugin"]
+enabled = true
+
+[features]
+js_repl = false
