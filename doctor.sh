@@ -93,23 +93,12 @@ if [ -f "$HOME/.zshrc" ] && grep -Eq 'sk-(ant|proj)-|OPENAI_API_KEY=|ANTHROPIC_A
   echo "warning: ~/.zshrc appears to contain an API key. Move secrets to ~/.zshrc.local or a secret manager."
 fi
 
-check_link "$DOTFILES_DIR/.zprofile" "$HOME/.zprofile"
-check_link "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
-check_link "$DOTFILES_DIR/.aliases" "$HOME/.aliases"
-check_link "$DOTFILES_DIR/.functions" "$HOME/.functions"
-check_link "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
-check_link "$DOTFILES_DIR/.gitignore_global" "$HOME/.gitignore_global"
-check_link "$DOTFILES_DIR/.gemrc" "$HOME/.gemrc"
-check_link "$DOTFILES_DIR/.ackrc" "$HOME/.ackrc"
-check_link "$DOTFILES_DIR/.vimrc" "$HOME/.vimrc"
-check_link "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
-check_link "$DOTFILES_DIR/apps/zed/settings.json" "$HOME/.config/zed/settings.json"
-check_link "$DOTFILES_DIR/apps/gh/config.yml" "$HOME/.config/gh/config.yml"
-check_link "$DOTFILES_DIR/apps/ghostty/config" "$HOME/.config/ghostty/config"
-check_link "$DOTFILES_DIR/agents/AGENTS.md" "$HOME/.codex/AGENTS.md"
-check_link "$DOTFILES_DIR/agents/AGENTS.md" "$HOME/.claude/AGENTS.md"
-check_link "$DOTFILES_DIR/agents/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
-check_link "$DOTFILES_DIR/agents/claude/settings.json" "$HOME/.claude/settings.json"
+# shellcheck source=scripts/links.sh
+source "$DOTFILES_DIR/scripts/links.sh"
+
+for entry in "${DOTFILES_LINKS[@]}"; do
+  check_link "$DOTFILES_DIR/${entry%%|*}" "${entry#*|}"
+done
 
 if [ "$CHECK_PERSONAL" -eq 1 ]; then
   if "$DOTFILES_DIR/scripts/macos-defaults.sh" --check; then

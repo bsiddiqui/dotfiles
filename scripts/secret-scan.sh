@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-pattern='(sk-ant-|sk-proj-|sk-[A-Za-z0-9_-]{32,}|xox[baprs]-|BEGIN (OPENSSH|RSA|EC|DSA) PRIVATE KEY)'
+pattern='(sk-ant-|sk-proj-|sk-[A-Za-z0-9_-]{32,}|xox[baprs]-|ghp_[A-Za-z0-9]{36}|github_pat_[A-Za-z0-9_]{22,}|glpat-[A-Za-z0-9_-]{20}|AKIA[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{35}|BEGIN (OPENSSH|RSA|EC|DSA) PRIVATE KEY)'
 
 if [ "${1:-}" = "--staged" ]; then
   if git diff --cached --no-ext-diff --unified=0 -- . ':!templates/*' ':!README.md' ':!scripts/secret-scan.sh' |

@@ -46,24 +46,13 @@ install_if_missing() {
   echo "install: $target"
 }
 
-link_file "$DOTFILES_DIR/.zprofile" "$HOME/.zprofile"
-link_file "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
-link_file "$DOTFILES_DIR/.aliases" "$HOME/.aliases"
-link_file "$DOTFILES_DIR/.functions" "$HOME/.functions"
-link_file "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
-link_file "$DOTFILES_DIR/.gitignore_global" "$HOME/.gitignore_global"
-link_file "$DOTFILES_DIR/.gemrc" "$HOME/.gemrc"
-link_file "$DOTFILES_DIR/.ackrc" "$HOME/.ackrc"
-link_file "$DOTFILES_DIR/.vimrc" "$HOME/.vimrc"
-link_file "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
+# shellcheck source=scripts/links.sh
+source "$DOTFILES_DIR/scripts/links.sh"
 
-link_file "$DOTFILES_DIR/apps/zed/settings.json" "$HOME/.config/zed/settings.json"
-link_file "$DOTFILES_DIR/apps/gh/config.yml" "$HOME/.config/gh/config.yml"
-link_file "$DOTFILES_DIR/apps/ghostty/config" "$HOME/.config/ghostty/config"
-link_file "$DOTFILES_DIR/agents/AGENTS.md" "$HOME/.codex/AGENTS.md"
-link_file "$DOTFILES_DIR/agents/AGENTS.md" "$HOME/.claude/AGENTS.md"
-link_file "$DOTFILES_DIR/agents/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
-link_file "$DOTFILES_DIR/agents/claude/settings.json" "$HOME/.claude/settings.json"
+for entry in "${DOTFILES_LINKS[@]}"; do
+  link_file "$DOTFILES_DIR/${entry%%|*}" "${entry#*|}"
+done
+
 install_if_missing "$DOTFILES_DIR/agents/codex/config.template.toml" "$HOME/.codex/config.toml"
 
 if [ ! -e "$HOME/.zshrc.local" ]; then

@@ -1,6 +1,8 @@
 .DS_Store
 .vim/
-.vim/bundle/
+
+# Generated machine inventory; contains local machine state, keep out of the public repo.
+docs/machine-candidates.md
 
 # Local-only overlays and generated configs.
 *.local

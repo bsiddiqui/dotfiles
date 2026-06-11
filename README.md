@@ -46,6 +46,10 @@ This writes `docs/machine-candidates.md`. Rows start as `candidate`; change a
 row to `promote` only when you want it folded into setup later, or `skip` when
 it is known bloat or machine-specific state.
 
+The file is generated, machine-specific, and gitignored: it inventories
+installed apps, global packages, and macOS preferences, which should not be
+published in this repo.
+
 Read-only checks for promoted rows:
 
 ```sh
@@ -84,7 +88,7 @@ Brewfile                 Homebrew formulae and apps
 bootstrap.sh             New-machine setup
 link.sh                  Idempotent symlink manager
 doctor.sh                Local setup checks
-docs/machine-candidates.md Editable review queue for optional machine state
+docs/machine-candidates.md Generated review queue for optional machine state (gitignored)
 shell/                   Zsh path, aliases, and functions
 agents/                  Codex and Claude portable templates
 apps/                    App config for Zed, gh, Ghostty

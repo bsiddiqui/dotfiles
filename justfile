@@ -1,3 +1,6 @@
+default:
+    @just --list
+
 bootstrap:
     ./bootstrap.sh
 

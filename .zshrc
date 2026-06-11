@@ -12,7 +12,7 @@ if [ -r "$ZSH/oh-my-zsh.sh" ]; then
   source "$ZSH/oh-my-zsh.sh"
 fi
 
-for file in "$DOTFILES_DIR"/.functions "$DOTFILES_DIR"/.aliases; do
+for file in "$DOTFILES_DIR"/shell/functions.zsh "$DOTFILES_DIR"/shell/aliases.zsh; do
   [ -r "$file" ] && source "$file"
 done
 unset file

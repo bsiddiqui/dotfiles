@@ -1,2 +1,0 @@
-DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
-[ -r "$DOTFILES_DIR/shell/aliases.zsh" ] && source "$DOTFILES_DIR/shell/aliases.zsh"
