@@ -55,5 +55,6 @@
       }
     }
   },
-  "theme": "dark-ansi"
+  "theme": "dark-ansi",
+  "skipWorkflowUsageWarning": true
 }

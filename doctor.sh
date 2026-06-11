@@ -3,6 +3,35 @@ set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 status=0
+CHECK_PERSONAL=0
+
+usage() {
+  cat <<'USAGE'
+Usage: ./doctor.sh [--personal]
+
+Options:
+  --personal  Also check promoted personal/package and macOS candidate rows.
+  -h, --help  Show this help.
+USAGE
+}
+
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+  --personal)
+    CHECK_PERSONAL=1
+    ;;
+  -h | --help)
+    usage
+    exit 0
+    ;;
+  *)
+    echo "unknown option: $1" >&2
+    usage >&2
+    exit 1
+    ;;
+  esac
+  shift
+done
 
 required_commands=(
   brew
@@ -77,6 +106,23 @@ check_link "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
 check_link "$DOTFILES_DIR/apps/zed/settings.json" "$HOME/.config/zed/settings.json"
 check_link "$DOTFILES_DIR/apps/gh/config.yml" "$HOME/.config/gh/config.yml"
 check_link "$DOTFILES_DIR/apps/ghostty/config" "$HOME/.config/ghostty/config"
+check_link "$DOTFILES_DIR/agents/AGENTS.md" "$HOME/.codex/AGENTS.md"
+check_link "$DOTFILES_DIR/agents/AGENTS.md" "$HOME/.claude/AGENTS.md"
+check_link "$DOTFILES_DIR/agents/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
 check_link "$DOTFILES_DIR/agents/claude/settings.json" "$HOME/.claude/settings.json"
+
+if [ "$CHECK_PERSONAL" -eq 1 ]; then
+  if "$DOTFILES_DIR/scripts/macos-defaults.sh" --check; then
+    echo "ok: promoted macOS candidates"
+  else
+    status=1
+  fi
+
+  if "$DOTFILES_DIR/scripts/personal-check.sh"; then
+    echo "ok: promoted personal candidates"
+  else
+    status=1
+  fi
+fi
 
 exit "$status"
