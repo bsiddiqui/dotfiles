@@ -17,10 +17,6 @@ if typeset -f compdef >/dev/null 2>&1; then
   compdef _c c
 fi
 
-function get_git_branch() {
-  git branch --show-current 2>/dev/null
-}
-
 function dash() {
   open "dash://$1"
 }

@@ -1,8 +1,7 @@
 # Keep this file portable and secret-free. Put machine-local exports, tokens,
 # and one-off PATH additions in ~/.zshrc.local, which is intentionally ignored.
+# PATH and environment setup live in shell/path.zsh, sourced once from .zprofile.
 export DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
-
-[ -r "$DOTFILES_DIR/shell/path.zsh" ] && source "$DOTFILES_DIR/shell/path.zsh"
 
 ZSH="${ZSH:-$HOME/.oh-my-zsh}"
 ZSH_THEME="${ZSH_THEME:-robbyrussell}"
