@@ -93,7 +93,6 @@ shell/                   Zsh path, aliases, and functions
 agents/                  Codex and Claude portable templates
 apps/                    App config for Zed, gh, Ghostty
 templates/               Ignored local overlay examples
-legacy/                  Old Vim, tmux powerline, and iTerm configs
 ```
 
 ## Agent Config
@@ -125,7 +124,3 @@ Not tracked:
 - `~/.claude/history.jsonl`
 - `~/.claude/sessions/`
 - Any generated cache, telemetry, or auth state
-
-## Legacy Vim And Tmux
-
-The old plugin-heavy Vim and tmux powerline configs are preserved under `legacy/`. The active root `.vimrc` and `.tmux.conf` are intentionally small fallback configs.

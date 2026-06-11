@@ -1,4 +1,4 @@
-" Minimal fallback Vim config. The old Vundle setup lives in legacy/vimrc.vundle.
+" Minimal fallback Vim config.
 set nocompatible
 set encoding=utf-8
 syntax on
