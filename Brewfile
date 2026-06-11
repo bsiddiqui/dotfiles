@@ -46,9 +46,11 @@ brew "ruby"
 brew "hashicorp/tap/vault"
 brew "heroku/brew/heroku"
 
-# Agent-heavy coding setup.
+# Secrets management.
 cask "1password"
 cask "1password-cli"
+
+# Agent-heavy coding setup.
 # Claude desktop app and Claude Code CLI.
 cask "claude"
 cask "claude-code"

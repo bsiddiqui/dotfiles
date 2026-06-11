@@ -10,7 +10,7 @@ cd ~/dotfiles
 ./bootstrap.sh
 ```
 
-`bootstrap.sh` installs Homebrew when needed, runs `brew bundle`, links managed dotfiles, installs Oh My Zsh if missing, and enables this repo's pre-commit hook.
+`bootstrap.sh` installs Homebrew when needed, runs `brew bundle`, links managed dotfiles, installs Oh My Zsh if missing, enables this repo's pre-commit hook, and sets the brewed zsh as your default shell.
 
 For repeat runs that should skip the full Brewfile pass:
 
@@ -88,6 +88,9 @@ Brewfile                 Homebrew formulae and apps
 bootstrap.sh             New-machine setup
 link.sh                  Idempotent symlink manager
 doctor.sh                Local setup checks
+justfile                 Task shortcuts (bootstrap, link, doctor, audit)
+scripts/                 Audit and check helpers, plus the shared symlink table
+.githooks/               Pre-commit lint and secret scan
 docs/machine-candidates.md Generated review queue for optional machine state (gitignored)
 shell/                   Zsh path, aliases, and functions
 agents/                  Codex and Claude portable templates
