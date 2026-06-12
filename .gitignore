@@ -1,1 +1,37 @@
-.vim
+.DS_Store
+.vim/
+
+# Generated machine inventory; contains local machine state, keep out of the public repo.
+docs/machine-candidates.md
+
+# Local-only overlays and generated configs.
+*.local
+*.local.*
+*.private
+*.private.*
+.env
+.env.*
+!.env.example
+!.env.local.example
+.zshrc.local
+.gitconfig.local
+!templates/
+!templates/*.example
+
+# Tool state that should never be checked in.
+.codex/
+.claude/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+history.jsonl
+auth.json
+session_index.jsonl
+shell_snapshots/
+logs/
+log/
+
+# Temporary files.
+*.swp
+*.swo
+*.tmp

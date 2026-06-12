@@ -1,25 +1,27 @@
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH:$HOME/.rvm/bin
+# Keep this file portable and secret-free. Put machine-local exports, tokens,
+# and one-off PATH additions in ~/.zshrc.local, which is intentionally ignored.
+# PATH and environment setup live in shell/path.zsh, sourced once from .zprofile.
+export DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
 
+ZSH="${ZSH:-$HOME/.oh-my-zsh}"
+ZSH_THEME="${ZSH_THEME:-robbyrussell}"
+plugins=(git macos rails node)
 
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="robbyrussell"
-plugins=(git macos rails node heroku)
-source $ZSH/oh-my-zsh.sh
+if [ -r "$ZSH/oh-my-zsh.sh" ]; then
+  source "$ZSH/oh-my-zsh.sh"
+fi
 
-for file in ~/.{functions,aliases}; do
-    [ -r "$file" ] && source "$file"
+for file in "$DOTFILES_DIR"/shell/functions.zsh "$DOTFILES_DIR"/shell/aliases.zsh; do
+  [ -r "$file" ] && source "$file"
 done
 unset file
 
-# disable marking untracked files under VCS as dirty DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
-  export PATH=/opt/homebrew/opt/ruby/bin:$PATH
-  export PATH=`gem environment gemdir`/bin:$PATH
+if command -v direnv >/dev/null 2>&1; then
+  eval "$(direnv hook zsh)"
 fi
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/.fastlane/bin:$PATH"
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+fi
+
+[ -r "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"

@@ -3,19 +3,58 @@
   email = basil.siddiqui@gmail.com
 
 [core]
-  editor = vim
-
-[color]
-  ui = auto
+  editor = zed --wait
+  excludesfile = ~/.gitignore_global
 
 [github]
   user = bsiddiqui
 
 [alias]
+  a = add
+  ap = add -p
+  b = branch
+  c = commit
+  ca = commit --amend
+  cane = commit --amend --no-edit
+  co = checkout
+  cob = checkout -b
+  d = diff
+  dc = diff --cached
+  l = log --oneline --decorate --graph --all
+  pr = pull --rebase
+  rb = rebase
+  s = status --short --branch
+  st = status
+  sw = switch
 
 [color]
+  ui = auto
   diff = auto
   status = auto
   branch = auto
   interactive = auto
   grep = auto
+
+[init]
+  defaultBranch = main
+
+[push]
+  autoSetupRemote = true
+
+[pull]
+  ff = only
+
+[fetch]
+  prune = true
+
+[rerere]
+  enabled = true
+
+[merge]
+  conflictstyle = zdiff3
+
+[diff]
+  algorithm = histogram
+
+[include]
+  path = ~/.gitconfig.local

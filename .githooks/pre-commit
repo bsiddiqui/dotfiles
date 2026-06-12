@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+hook_file=".githooks/pre-commit"
+shell_files=()
+
+while IFS= read -r file; do
+  shell_files+=("$file")
+done < <(git ls-files '*.sh')
+
+shell_targets=("${shell_files[@]}" "$hook_file")
+
+if ! command -v shellcheck >/dev/null 2>&1; then
+  echo "missing: shellcheck. Install it with brew bundle." >&2
+  exit 1
+fi
+
+if ! command -v shfmt >/dev/null 2>&1; then
+  echo "missing: shfmt. Install it with brew bundle." >&2
+  exit 1
+fi
+
+shellcheck "${shell_targets[@]}"
+shfmt -d "${shell_targets[@]}"
+
+scripts/secret-scan.sh --staged

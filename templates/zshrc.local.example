@@ -1,0 +1,10 @@
+# This file is intentionally not tracked when copied to ~/.zshrc.local.
+# Use it for machine-local PATH entries and secrets.
+
+# Example: load secrets from 1Password without committing them.
+# export ANTHROPIC_API_KEY="$(op read 'op://Private/Anthropic API Key/credential')"
+# export OPENAI_API_KEY="$(op read 'op://Private/OpenAI API Key/credential')"
+
+# Example: project- or machine-specific paths.
+# export SSH_KEY_PATH="$HOME/.ssh/id_ed25519"
+# export PATH="/custom/toolchain/bin:$PATH"
