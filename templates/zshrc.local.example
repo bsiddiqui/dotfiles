@@ -1,8 +1,9 @@
 # This file is intentionally not tracked when copied to ~/.zshrc.local.
 # Use it for machine-local PATH entries and secrets.
 
-# Load API keys from 1Password without committing them. This quietly skips when
-# the 1Password CLI is missing or signed out, so fresh shells do not break.
+# Load API keys from 1Password without committing them. This is intentionally
+# manual because running `op read` during every shell startup can trigger
+# repeated 1Password desktop prompts.
 load_1password_secret() {
   local name="$1"
   local reference="$2"
@@ -14,9 +15,13 @@ load_1password_secret() {
   export "$name=$value"
 }
 
-load_1password_secret OPENAI_API_KEY "op://Private/OpenAI API Key/credential"
-load_1password_secret ANTHROPIC_API_KEY "op://Private/Anthropic API Key/credential"
-unset -f load_1password_secret
+load_1password_api_keys() {
+  load_1password_secret OPENAI_API_KEY "op://Private/OpenAI API Key/credential"
+  load_1password_secret ANTHROPIC_API_KEY "op://Private/Anthropic API Key/credential"
+}
+
+# Run manually when needed:
+#   load_1password_api_keys
 
 # Example: project- or machine-specific paths.
 # export SSH_KEY_PATH="$HOME/.ssh/id_ed25519"

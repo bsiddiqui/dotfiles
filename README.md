@@ -108,8 +108,8 @@ cp templates/gitconfig.local.example ~/.gitconfig.local
 
 ### API Keys
 
-Store long-lived API keys in 1Password, then load them from the ignored
-`~/.zshrc.local` overlay.
+Store long-lived API keys in 1Password, then use the ignored
+`~/.zshrc.local` overlay to define local loading helpers.
 
 On a new computer:
 
@@ -121,14 +121,16 @@ chmod 600 ~/.zshrc.local
 ```
 
 If you use the 1Password desktop app, you can enable CLI integration there
-instead of adding the account manually.
+instead of adding the account manually. The template defines
+`load_1password_api_keys`; run it in a shell when you want those API keys in
+your environment.
 
 In 1Password, create two API Credential items in the `Private` vault:
 
 - `OpenAI API Key`, with the key in the `credential` field.
 - `Anthropic API Key`, with the key in the `credential` field.
 
-The template reads:
+The helper reads:
 
 ```sh
 op://Private/OpenAI API Key/credential
