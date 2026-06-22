@@ -51,6 +51,25 @@ apply_power_settings() {
   fi
 }
 
+apply_dock_settings() {
+  if ! command -v dockutil >/dev/null 2>&1; then
+    echo "warning: dockutil is not installed; skipping Dock cleanup" >&2
+    return 1
+  fi
+
+  echo "apply: remove pinned Dock apps"
+  dockutil --list |
+    awk -F'\t' '$3 == "persistentApps" { print ($5 != "" ? $5 : $1) }' |
+    while IFS= read -r item; do
+      [ -n "$item" ] || continue
+      dockutil --remove "$item" --no-restart >/dev/null || true
+    done
+
+  echo "apply: hide recent applications in Dock"
+  defaults write com.apple.dock show-recents -bool false
+  killall Dock >/dev/null 2>&1 || true
+}
+
 load_key_remap_agent() {
   local domain
   domain="gui/$(id -u)"
@@ -162,11 +181,40 @@ check_key_remap() {
   fi
 }
 
+check_dock_settings() {
+  local status=0
+  local pinned_count show_recents
+
+  if ! command -v dockutil >/dev/null 2>&1; then
+    echo "missing: dockutil"
+    return 1
+  fi
+
+  pinned_count="$(dockutil --list 2>/dev/null | awk -F'\t' '$3 == "persistentApps" { count++ } END { print count + 0 }')"
+  if [ "$pinned_count" -eq 0 ]; then
+    echo "ok: Dock has no pinned apps"
+  else
+    echo "drift: Dock has $pinned_count pinned app(s)"
+    status=1
+  fi
+
+  show_recents="$(defaults read com.apple.dock show-recents 2>/dev/null || printf '1')"
+  if [ "$show_recents" = "0" ]; then
+    echo "ok: Dock recent applications hidden"
+  else
+    echo "drift: Dock recent applications are visible"
+    status=1
+  fi
+
+  return "$status"
+}
+
 case "${1:-}" in
 --apply)
   require_macos
   apply_key_remap
   apply_power_settings
+  apply_dock_settings
   load_key_remap_agent
   ;;
 --check)
@@ -174,6 +222,7 @@ case "${1:-}" in
   status=0
   check_key_remap || status=1
   check_power_settings || status=1
+  check_dock_settings || status=1
   exit "$status"
   ;;
 *)
