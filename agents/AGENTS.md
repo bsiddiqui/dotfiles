@@ -5,3 +5,4 @@
 - Keep secrets out of tracked files. Use ignored local overlays or a secret manager.
 - Run the most relevant verification before handing work back.
 - Do not revert user changes unless explicitly asked.
+- When creating branches, use the `bsiddiqui/` prefix.
