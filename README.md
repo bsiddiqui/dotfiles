@@ -36,10 +36,10 @@ To reapply tracked macOS settings without running the full bootstrap:
 just macos-apply
 ```
 
-Tracked macOS settings currently include Caps Lock to Control, disabled idle
-display sleep, disabled idle system sleep, no battery brightness dimming, and
-Low Power Mode off where the Mac reports that setting. Display auto-brightness
-and True Tone are intentionally left as-is.
+Tracked macOS settings currently include Caps Lock to Control, natural trackpad
+scrolling off, disabled idle display sleep, disabled idle system sleep, no
+battery brightness dimming, and Low Power Mode off where the Mac reports that
+setting. Display auto-brightness and True Tone are intentionally left as-is.
 
 If `brew bundle` fails while fetching several formulae, first check that the
 machine can reach Homebrew's metadata and bottle hosts:

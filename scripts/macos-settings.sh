@@ -25,6 +25,11 @@ apply_key_remap() {
   hidutil property --set "$CAPS_LOCK_TO_CONTROL" >/dev/null
 }
 
+apply_trackpad_settings() {
+  echo "apply: natural trackpad scrolling off"
+  defaults write -g com.apple.swipescrolldirection -bool false
+}
+
 run_pmset() {
   if [ "$(id -u)" -eq 0 ]; then
     pmset "$@"
@@ -181,6 +186,18 @@ check_key_remap() {
   fi
 }
 
+check_trackpad_settings() {
+  local scroll_direction
+  scroll_direction="$(defaults read -g com.apple.swipescrolldirection 2>/dev/null || printf '1')"
+
+  if [ "$scroll_direction" = "0" ]; then
+    echo "ok: natural trackpad scrolling off"
+  else
+    echo "drift: natural trackpad scrolling is on"
+    return 1
+  fi
+}
+
 check_dock_settings() {
   local status=0
   local pinned_count show_recents
@@ -213,6 +230,7 @@ case "${1:-}" in
 --apply)
   require_macos
   apply_key_remap
+  apply_trackpad_settings
   apply_power_settings
   apply_dock_settings
   load_key_remap_agent
@@ -221,6 +239,7 @@ case "${1:-}" in
   require_macos
   status=0
   check_key_remap || status=1
+  check_trackpad_settings || status=1
   check_power_settings || status=1
   check_dock_settings || status=1
   exit "$status"
