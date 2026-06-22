@@ -53,6 +53,94 @@ load_homebrew() {
   fi
 }
 
+check_fetch_url() {
+  local label="$1"
+  local url="$2"
+
+  if curl -fsSL --connect-timeout 10 --max-time 20 "$url" >/dev/null; then
+    echo "ok: $label"
+    return
+  fi
+
+  echo "error: could not reach $label ($url)" >&2
+  return 1
+}
+
+check_http_status() {
+  local label="$1"
+  local url="$2"
+  local expected_statuses="$3"
+  local status
+
+  status="$(curl -sS -o /dev/null -w "%{http_code}" --connect-timeout 10 --max-time 20 "$url" || true)"
+
+  case " $expected_statuses " in
+  *" $status "*)
+    echo "ok: $label"
+    ;;
+  *)
+    echo "error: could not reach $label ($url returned HTTP $status)" >&2
+    return 1
+    ;;
+  esac
+}
+
+check_homebrew_fetch_access() {
+  local status=0
+
+  echo "check: Homebrew fetch access"
+  check_fetch_url "Homebrew formula API" "https://formulae.brew.sh/api/formula/bat.json" || status=1
+  check_fetch_url "GitHub" "https://github.com/Homebrew/brew" || status=1
+  check_http_status "GitHub Container Registry" "https://ghcr.io/v2/" "200 401" || status=1
+
+  if [ "$status" -ne 0 ]; then
+    cat >&2 <<'HELP'
+
+Homebrew needs access to formulae.brew.sh, github.com, and ghcr.io before
+brew bundle can fetch formula metadata and bottles. If this is a managed or
+filtered network, try a VPN, phone hotspot, or proxy configuration, then rerun
+./bootstrap.sh.
+HELP
+    exit 1
+  fi
+}
+
+update_homebrew_metadata() {
+  echo "update: Homebrew metadata"
+
+  if brew update --force --quiet; then
+    return
+  fi
+
+  cat >&2 <<'HELP'
+
+Homebrew could not update its metadata. Try this manually for the full error:
+
+  brew update --force
+  brew doctor
+
+Then rerun ./bootstrap.sh.
+HELP
+  exit 1
+}
+
+tap_brewfile_taps() {
+  echo "tap: Brewfile taps"
+
+  HOMEBREW_NO_AUTO_UPDATE=1 brew bundle list --file "$DOTFILES_DIR/Brewfile" --tap |
+    while IFS= read -r tap_name; do
+      [ -n "$tap_name" ] || continue
+      brew tap "$tap_name"
+    done
+}
+
+run_brew_bundle() {
+  check_homebrew_fetch_access
+  update_homebrew_metadata
+  tap_brewfile_taps
+  brew bundle --file "$DOTFILES_DIR/Brewfile"
+}
+
 install_oh_my_zsh() {
   if [ -d "$HOME/.oh-my-zsh" ]; then
     return
@@ -92,7 +180,7 @@ load_homebrew
 if [ "$SKIP_BUNDLE" -eq 1 ]; then
   echo "skip: brew bundle"
 else
-  brew bundle --file "$DOTFILES_DIR/Brewfile"
+  run_brew_bundle
 fi
 
 install_oh_my_zsh
