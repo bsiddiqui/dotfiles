@@ -10,7 +10,7 @@ cd ~/dotfiles
 ./bootstrap.sh
 ```
 
-`bootstrap.sh` installs Homebrew when needed, runs `brew bundle`, links managed dotfiles, installs Oh My Zsh if missing, enables this repo's pre-commit hook, and sets the brewed zsh as your default shell.
+`bootstrap.sh` installs Homebrew when needed, runs `brew bundle`, links managed dotfiles, applies tracked macOS settings, installs Oh My Zsh if missing, enables this repo's pre-commit hook, and sets the brewed zsh as your default shell.
 
 For repeat runs that should skip the full Brewfile pass:
 
@@ -29,6 +29,17 @@ For a quick health check:
 ```sh
 ./doctor.sh
 ```
+
+To reapply tracked macOS settings without running the full bootstrap:
+
+```sh
+just macos-apply
+```
+
+Tracked macOS settings currently include Caps Lock to Control, disabled idle
+display sleep, disabled idle system sleep, no battery brightness dimming, and
+Low Power Mode off where the Mac reports that setting. Display auto-brightness
+and True Tone are intentionally left as-is.
 
 If `brew bundle` fails while fetching several formulae, first check that the
 machine can reach Homebrew's metadata and bottle hosts:

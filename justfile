@@ -17,7 +17,11 @@ audit-machine:
     ./scripts/audit-machine.sh
 
 macos-check:
-    ./scripts/macos-defaults.sh --check
+    ./scripts/macos-settings.sh --check
+    @if [ -f docs/machine-candidates.md ]; then ./scripts/macos-defaults.sh --check; else echo "ok: no machine candidate macOS rows"; fi
+
+macos-apply:
+    ./scripts/macos-settings.sh --apply
 
 personal-check:
     ./scripts/personal-check.sh

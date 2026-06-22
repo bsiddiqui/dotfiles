@@ -185,6 +185,7 @@ fi
 
 install_oh_my_zsh
 "$DOTFILES_DIR/link.sh"
+"$DOTFILES_DIR/scripts/macos-settings.sh" --apply
 
 if command -v git >/dev/null 2>&1; then
   git -C "$DOTFILES_DIR" config core.hooksPath .githooks

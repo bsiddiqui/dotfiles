@@ -100,6 +100,14 @@ for entry in "${DOTFILES_LINKS[@]}"; do
   check_link "$DOTFILES_DIR/${entry%%|*}" "${entry#*|}"
 done
 
+if [ "$(uname)" = "Darwin" ]; then
+  if "$DOTFILES_DIR/scripts/macos-settings.sh" --check; then
+    :
+  else
+    status=1
+  fi
+fi
+
 if [ "$CHECK_PERSONAL" -eq 1 ]; then
   if "$DOTFILES_DIR/scripts/macos-defaults.sh" --check; then
     echo "ok: promoted macOS candidates"
