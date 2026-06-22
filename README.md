@@ -30,6 +30,21 @@ For a quick health check:
 ./doctor.sh
 ```
 
+If `brew bundle` fails while fetching several formulae, first check that the
+machine can reach Homebrew's metadata and bottle hosts:
+
+```sh
+curl -fsSL https://formulae.brew.sh/api/formula/bat.json >/dev/null
+curl -sS -o /dev/null -w '%{http_code}\n' https://ghcr.io/v2/
+brew update --force
+brew doctor
+```
+
+The GHCR check should print `200` or `401`. If those checks fail, fix the
+network, VPN, proxy, or managed-device filter and rerun `./bootstrap.sh`. If
+only tapped formulae fail, run `brew tap hashicorp/tap heroku/brew` and rerun
+the bootstrap.
+
 ## Machine Candidates
 
 The default bootstrap is intentionally lean: it does not copy every global
