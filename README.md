@@ -102,8 +102,41 @@ Templates live in `templates/`.
 
 ```sh
 cp templates/zshrc.local.example ~/.zshrc.local
+chmod 600 ~/.zshrc.local
 cp templates/gitconfig.local.example ~/.gitconfig.local
 ```
+
+### API Keys
+
+Store long-lived API keys in 1Password, then load them from the ignored
+`~/.zshrc.local` overlay.
+
+On a new computer:
+
+```sh
+op account add
+op signin
+cp templates/zshrc.local.example ~/.zshrc.local
+chmod 600 ~/.zshrc.local
+```
+
+If you use the 1Password desktop app, you can enable CLI integration there
+instead of adding the account manually.
+
+In 1Password, create two API Credential items in the `Private` vault:
+
+- `OpenAI API Key`, with the key in the `credential` field.
+- `Anthropic API Key`, with the key in the `credential` field.
+
+The template reads:
+
+```sh
+op://Private/OpenAI API Key/credential
+op://Private/Anthropic API Key/credential
+```
+
+If you create these items with `op item create`, use a JSON item template or
+standard input rather than putting real keys in shell arguments.
 
 The repo includes `scripts/secret-scan.sh` and a pre-commit hook to catch common secret patterns before they reach GitHub.
 
