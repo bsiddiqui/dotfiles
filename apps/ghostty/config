@@ -3,3 +3,6 @@ macos-option-as-alt = true
 copy-on-select = clipboard
 window-save-state = always
 shell-integration = zsh
+# Use a terminfo entry that macOS and remote shells commonly know, avoiding
+# pager warnings such as "terminal is not fully functional" from less/git diff.
+term = xterm-256color

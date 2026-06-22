@@ -1,6 +1,5 @@
 {
   "includeCoAuthoredBy": false,
-  "model": "opus[1m]",
   "permissions": {
     "allow": [
       "WebSearch",
@@ -17,7 +16,7 @@
     "deny": [],
     "defaultMode": "bypassPermissions"
   },
-  "skipDangerousModePermissionPrompt": true,
+  "model": "opus[1m]",
   "hooks": {
     "Stop": [
       {
@@ -55,6 +54,7 @@
       }
     }
   },
-  "theme": "dark-ansi",
-  "skipWorkflowUsageWarning": true
+  "skipDangerousModePermissionPrompt": true,
+  "skipWorkflowUsageWarning": true,
+  "theme": "auto"
 }
